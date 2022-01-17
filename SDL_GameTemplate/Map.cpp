@@ -103,7 +103,7 @@ Map::Map(SDL_Renderer* renderer)
 
 Map::~Map(){}
 
-void Map::LoadMap(int arr1[20][25], int arr2[20][25], int arr3[20][25])
+void Map::LoadMap(int arr1[20][25], int arr2[20][25], int arr3[20][25])//incarcam pozitiile pentru mape
 {
 	for (int row = 0; row < 20; row++)
 	{
@@ -134,7 +134,7 @@ void Map::DrawMap()
 	{
 		for (int column = 0; column < 25; column++)
 		{
-			switch (mapindex)
+			switch (mapindex)//verificam mapa pe care o incarcam
 			{
 			case 1:
 				type = map1[row][column];
@@ -149,9 +149,9 @@ void Map::DrawMap()
 				break;
 			}
 			
-			dest.x = column * 40;
+			dest.x = column * 40;//setam dimensiunile pentru patratelele mapei
 			dest.y = row * 40;
-			switch (type)
+			switch (type)//in functie de indice incarcam patratelul potrivit
 			{
 			case 0:
 				TextureManager::Draw(zero, src, dest);
