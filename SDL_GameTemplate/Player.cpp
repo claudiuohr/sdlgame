@@ -94,7 +94,7 @@ void Player::draw()
 {
 	if (Game::characterChosen)
 	{
-		switch (Game::chooseCharacterflag)
+		switch (Game::chooseCharacterflag)//in functie de caracterul ales il vom afisa
 		{
 		case 1:
 			Animation::draw(texture1, texture2, srcRect, destRect, 30);
@@ -116,7 +116,7 @@ void Player::checkCollision()// verificam daca au loc coliziuni printr o variabi
 {                            //sau oprim jocul daca au loc coliziuni cu obiecte nepermise
 	int gravity = 2;
 	int pspeed = 2;
-	int tempx, tempy;
+	int tempx, tempy;//pozitia pe care vrem sa o luam
 	tempx = destRect.x + xvelocity * pspeed;
 	if (sare == 1)
 	{
@@ -129,13 +129,13 @@ void Player::checkCollision()// verificam daca au loc coliziuni printr o variabi
 		else
 			tempy = destRect.y;
 	}
-	if (tempx < 0)
+	if (tempx < 0)    //verificam in urmatoarele 3 if uri sa nu treaca de marginile ecranului
 		destRect.x = 0;
 	if (tempy < 0)
 		destRect.y = 0;
 	if (tempx > 1000)
 		destRect.x = 1000;
-	if (!ColliderComponent::Ecollision({ tempx, tempy, 29, 21 }))
+	if (!ColliderComponent::Ecollision({ tempx, tempy, 29, 21 }))//daca nu avem coliziune vom da update la pozitie
 	{
 		if (saritura != 0)
 		{
@@ -164,7 +164,7 @@ void Player::checkCollision()// verificam daca au loc coliziuni printr o variabi
 			}
 		}
 	}
-	if (Player::sare == 1)
+	if (Player::sare == 1)//daca playerul sare va avea loc o modificare mai complexa a pozitiei pentru a face saritua mai realista
 	{
 		destRect.y -= 3;
 		destRect.x += 3;
