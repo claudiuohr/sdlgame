@@ -4,7 +4,7 @@
 
 bool ColliderComponent::epamantflag=0;
 
-ColliderComponent::ColliderComponent(string t, int xpos, int ypos, int size)
+ColliderComponent::ColliderComponent(string t, int xpos, int ypos, int size)//
 {
 	tag = t;
 	collider.x = xpos;
@@ -28,7 +28,7 @@ void ColliderComponent::draw()
 {
 	TextureManager::Draw(tex, srcR, destR);
 }
-bool ColliderComponent::AABB(const SDL_Rect& A, const SDL_Rect& B)
+bool ColliderComponent::AABB(const SDL_Rect& A, const SDL_Rect& B)//verificam toate cazurile in care 2 dreptunghiuri se pot intersecta
 {
 	if (
 		A.x + A.w >= B.x &&
@@ -45,7 +45,7 @@ bool ColliderComponent::AABB(const SDL_Rect& A, const SDL_Rect& B)
 bool ColliderComponent::Ecollision(SDL_Rect player)
 {
 	int map[20][25];
-	switch (Map::mapindex)//verificam pe ce mapa suntem
+	switch (Map::mapindex)//verificam pe ce mapa suntem pentru a o verifica pe cea corecta
 	{
 	case 1:
 		Map::LoadMap(map, Map::map1);
@@ -126,7 +126,7 @@ bool ColliderComponent::Ecollision(SDL_Rect player)
 				{
 					trece = true;
 					epamantflag = 0;
-					Game::levelpassed = 1;
+					Game::levelpassed = 1;//daca player ajunge pe acest patratel va trece nivelul
 				}
 			}
 			if (map[i][j] == 12)
